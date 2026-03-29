@@ -26,23 +26,32 @@ class Colors {
 
 // Class representing a process that implements Runnable to be run by a thread
 class Process implements Runnable {
+    private long crationtime;
+    private long witingtime;
     private priority:
     private String name; // Name of the process
     private int burstTime; // Total time the process requires to complete (in milliseconds)
     private int timeQuantum; // Time slice (time quantum) allowed per CPU access (in milliseconds)
     private int remainingTime; // Time left for the process to finish its execution
-
+   public long getwitingtime) {
+    return witingtime;
+}
     // Constructor to initialize the process with name, burst time, and time quantum
     public Process(String name, int burstTime, int timeQuantum) {
+        this.crationtime=System.currentTimeMillis();
+        
         this.name = name;
         this.burstTime = burstTime;
         this.timeQuantum = timeQuantum;
         this.remainingTime = burstTime; // Initially, remaining time is equal to the burst time
+     
     }
 
     // This method will be called when the thread for this process is started
     @Override
     public void run() {
+       long startTime = System.currentTimeMillis();
+          witingtime= startTime- crationtime  ;
         // Simulate running for either the time quantum or remaining time, whichever is smaller
         int runTime = Math.min(timeQuantum, remainingTime); // Run for the smaller of the two times
         
